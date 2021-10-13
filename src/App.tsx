@@ -7,10 +7,9 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                Christopher Bao
                 UD CIS Scheduler
                 <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
+                    Christopher Bao
                 </p>
             </header>
         </div>
