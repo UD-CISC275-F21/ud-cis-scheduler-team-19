@@ -9,7 +9,7 @@ function App(): JSX.Element {
                 <img src={logo} className="App-logo" alt="logo" />
                 UD CIS Scheduler
                 <p>
-                    Christopher Bao, Trent Littleton
+                    Christopher Bao, Trent Littleton 
                 </p>
             </header>
         </div>
