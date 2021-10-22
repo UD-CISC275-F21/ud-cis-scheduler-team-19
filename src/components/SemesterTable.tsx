@@ -29,5 +29,5 @@ export function SemesterTable(): JSX.Element {
                 </tr>
             </tbody>
         </Table>
-    </Row>
+    </Row>;
 }
