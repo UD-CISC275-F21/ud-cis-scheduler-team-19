@@ -31,7 +31,7 @@ export class Course {
     get cDescription(): string{
         return this.description;
     }
-    set cDescriptipon(description: string){
+    set cDescription(description: string){
         this.description = description;
     }
     get cPrereq(): [Course]{
