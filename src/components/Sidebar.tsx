@@ -71,7 +71,7 @@ export function Sidebar(): JSX.Element {
                             </Button>
                             <div className="main">
                                 <h1>UD CIS Scheduler</h1>
-                                <h4>Christopher Bao, Trent Littleton</h4>
+                                <h4>Christopher Bao, Trent Littleton,Alex Daley</h4>
                                 <SemesterTable></SemesterTable>
                             </div>
                         </div>
