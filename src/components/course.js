@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Course = void 0;
 var Course = /** @class */ (function () {
-    function Course(name, credits, description, prereq) {
+    function Course(name, credits, description, prereq,reveal) {
         this.name = name;
         this.credits = credits;
         this.description = description;
+        this.reveal;
         if (prereq) {
             this.prereq = prereq;
         }
@@ -54,10 +55,21 @@ var Course = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
+    Object.defineProperty(Course.prototype, "isReveal",{
+        get: function() {
+            return this.reveal;
+        },
+        set: function(reveal){
+            this.reveal = reveal;
+        },
+        enumerable: false,
+        configurable: true
+
+    });
     return Course;
 }());
 exports.Course = Course;
-var cisc100 = new Course("cisc100", 3, "this is a beginner sample class!");
-var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!", [cisc100]);
+var cisc100 = new Course("cisc100", 3, "this is a beginner sample class!",false);
+var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!",false, [cisc100]);
 console.log(cisc100.cName, cisc100.cCredits, cisc100.cDescription);
 console.log(cisc200.cName, cisc200.cCredits, cisc200.cDescription, cisc200.cPrereq);
