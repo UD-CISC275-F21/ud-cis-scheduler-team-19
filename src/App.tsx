@@ -11,15 +11,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
     return (
-        <div className="App">
-            <Sidebar></Sidebar> 
-        </div>
-        <DndProvider backend={HTML5Backend}>
-            <div className="App">
-                <Sidebar></Sidebar>
-                <Box></Box>
-            </div>
-        </DndProvider>
+        <><div className="App">
+            <Sidebar></Sidebar>
+        </div><DndProvider backend={HTML5Backend}>
+                <div className="App">
+                    <Sidebar></Sidebar>
+                    <Box></Box>
+                </div>
+            </DndProvider></>
     );
 }
 export default App;
