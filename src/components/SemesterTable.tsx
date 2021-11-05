@@ -3,7 +3,7 @@ import { Row, Table } from "react-bootstrap";
 
 export function SemesterTable(): JSX.Element {
     return <Row>
-        <Table className="table">
+        <Table className="table table-striped">
             <thead>
                 <tr>
                     <th scope="row">Course</th>
