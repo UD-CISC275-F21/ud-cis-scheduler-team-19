@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SemesterTable } from "./SemesterTable";
+import {courses} from "./courselist";
 import { Row, Button } from "react-bootstrap";
 
 export function Sidebar(): JSX.Element {
@@ -69,6 +70,13 @@ export function Sidebar(): JSX.Element {
                                 <i className="fas fa-align-left"></i>
                                 <span>Toggle Sidebar</span>
                             </Button>
+                            <select className="form-select" aria-label="Default select example">
+                                <option selected>Grade Level</option>
+                                <option value="1">Freshmen</option>
+                                <option value="2">Sophomore</option>
+                                <option value="3">Junior</option>
+                                <option value="4">Senior</option>
+                            </select>
                             <div className="main">
                                 <h1>UD CIS Scheduler</h1>
                                 <h4>Christopher Bao, Trent Littleton,Alex Daley</h4>
