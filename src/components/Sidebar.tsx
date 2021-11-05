@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { SemesterTable } from "./SemesterTable";
-import {courses} from "./courselist";
 import { Row, Button } from "react-bootstrap";
 
 export function Sidebar(): JSX.Element {
