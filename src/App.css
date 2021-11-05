@@ -47,11 +47,9 @@
 
 .main {
   width: 500%;
-  font-size: 1.2em; 
-}
-
-Button {
-  margin-left: -250px;
+  font-size: 1.2em;
+  margin-top: 60px;
+  margin-left: -100px;  
 }
 
 #sidebar {
@@ -94,6 +92,10 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #fafafa;
   
+}
+
+table table-striped {
+  width: 100%;
 }
 
 p {
