@@ -19,6 +19,13 @@ function App(): JSX.Element {
                     <Box></Box>
                 </div>
             </DndProvider></>
+        /* what the dog doin */
+        <DndProvider backend={HTML5Backend}>
+            <div className="App">
+                <Sidebar></Sidebar>
+                <Box></Box>
+            </div>
+        </DndProvider>
     );
 }
 export default App;
