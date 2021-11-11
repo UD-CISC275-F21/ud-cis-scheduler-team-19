@@ -3,11 +3,13 @@ export class Course {
     private credits: number;
     private description: string;
     private prereq: [Course?];
+    private reveal: boolean;
 
-    constructor(name:string, credits: number, description: string, prereq?: [Course?]){
+    constructor(name:string, credits: number, description: string,reveal: boolean, prereq?: [Course?]){
         this.name = name;
         this.credits = credits;
         this.description = description;
+        this.reveal = reveal;
         if (prereq){
             this.prereq = prereq;
         }
@@ -15,6 +17,7 @@ export class Course {
             this.prereq = [];
             return;
         }
+        
     }
     get cName(): string{
         return this.name;
@@ -41,9 +44,15 @@ export class Course {
     set cPrereq(prereq: [Course?]){
         this.prereq = prereq;
     }
+    get isReveal(): boolean{
+        return this.reveal;
+    }
+    set isReveal(reveal: boolean){
+        this.reveal = reveal;
+    }
 }
 
-var cisc100 = new Course("cisc100", 3, "this is a beginner sample class!");
-var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!", [cisc100]);
+var cisc100 = new Course("cisc100", 3, "this is a beginner sample class!",false);
+var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!",false, [cisc100]);
 console.log(cisc100.cName, cisc100.cCredits, cisc100.cDescription);
 console.log(cisc200.cName, cisc200.cCredits, cisc200.cDescription, cisc200.cPrereq);

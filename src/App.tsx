@@ -11,6 +11,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
     return (
+        <><div className="App">
+            <Sidebar></Sidebar>
+        </div><DndProvider backend={HTML5Backend}>
+                <div className="App">
+                    <Sidebar></Sidebar>
+                    <Box></Box>
+                </div>
+            </DndProvider></>
         /* what the dog doin */
         <DndProvider backend={HTML5Backend}>
             <div className="App">
@@ -20,5 +28,4 @@ function App(): JSX.Element {
         </DndProvider>
     );
 }
-
 export default App;

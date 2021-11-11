@@ -10,12 +10,12 @@ export function SemesterTable(): JSX.Element {
                     <th scope="row"></th>
                     <th scope="row">Credits</th>
                 </tr>
-            </thead>
+            </thead>            
             <tbody>
                 <tr>
-                    <th scope="col">placeholder</th>
-                    <th scope="col">placeholder</th>
-                    <th scope="col">placeholder</th>
+                    <th scope="col">Cisc 108</th>
+                    <th scope="col">Math 241</th>
+                    <th scope="col">Breath 1</th>
                 </tr>
                 <tr>
                     <th scope="col">placeholder</th>

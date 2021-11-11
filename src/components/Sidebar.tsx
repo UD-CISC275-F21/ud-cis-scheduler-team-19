@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
+import { Row, Button } from "react-bootstrap";
 import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 export function Sidebar(): JSX.Element {
@@ -60,6 +61,23 @@ export function Sidebar(): JSX.Element {
                 <div id="content">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <div className="container-fluid">
+                            <Button onClick={buttonHandler} type="button" id="sidebarCollapse" className="btn btn-info">
+                                <i className="fas fa-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </Button>
+                            <select className="form-select" aria-label="Default select example">
+                                <option selected>Grade Level</option>
+                                <option value="1">Freshmen</option>
+                                <option value="2">Sophomore</option>
+                                <option value="3">Junior</option>
+                                <option value="4">Senior</option>
+                            </select>
+                            <div className="main">
+                                <h1>UD CIS Scheduler</h1>
+                                <h4>Christopher Bao, Trent Littleton,Alex Daley</h4>
+                                <SemesterTable></SemesterTable>
+                            </div>
+
                             <Row>
                                 <Button onClick={buttonHandler} type="button" id="sidebarCollapse" className="btn btn-info">
                                     <i className="fas fa-align-left"></i>
