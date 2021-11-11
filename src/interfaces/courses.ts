@@ -1,7 +1,7 @@
 export interface Course{
-    code: string
+    prefix: string
     name: string
-    descr: string
+    description: string
     credits: number
     preReq: string
     limits: string
