@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
+//import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 export function Sidebar(): JSX.Element {
     const [isSidebarActive, setIsSidebarActive] = useState(true);
-    const TheSidebar = () => (
+    const TheSidebar = () => 
         <nav id="sidebar">
             <div className="sidebar-header">
                 <h3>UD CISC Scheduler</h3>
@@ -45,7 +45,7 @@ export function Sidebar(): JSX.Element {
                 </li>
             </ul>
         </nav>
-    );
+    ;
     function buttonHandler() {
         if(isSidebarActive){
             setIsSidebarActive(false);
