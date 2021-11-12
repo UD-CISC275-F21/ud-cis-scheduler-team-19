@@ -9,8 +9,7 @@ export class Course {
         this.credits = credits;
         this.description = description;
         if (prereq){
-            this.prereq = prereq;
-        }
+            this.prereq = prereq;}
         else{        
             this.prereq = [];
             return;
@@ -19,8 +18,7 @@ export class Course {
     get cName(): string{
         return this.name;
     }
-    set cName(name: string)
-    {
+    set cName(name: string){
         this.name = name;
     }
     get cCredits(): number{
