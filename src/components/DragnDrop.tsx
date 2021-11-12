@@ -1,6 +1,6 @@
 import React from "react";
 import { useDrag } from "react-dnd";
-import { Course } from "./course";
+//import { Course } from "./course";
 
 export function Box(): JSX.Element {
     const [{ isDragging }, drag, dragPreview] = useDrag(() => ({
