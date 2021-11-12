@@ -1,4 +1,5 @@
-export class Course {/*
+export {}
+/*export class Course {
     private name: string;
     private credits: number;
     private description: string;
@@ -38,7 +39,7 @@ export class Course {/*
     set cPrereq(prereq: [Course?]){
         this.prereq = prereq;
     }
-*/}
+}*/
 
 /*var cisc100 = new Course("cisc100", 3, "this is a beginner sample class!");
 var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!", [cisc100]);
