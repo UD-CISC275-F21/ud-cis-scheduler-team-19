@@ -31,8 +31,7 @@ export class Course {
         return this.description;
     }
     set cDescription(description: string){
-        this.description = description;
-    }
+        this.description = description;}
     get cPrereq(): [Course?]{
         return this.prereq;
     }
