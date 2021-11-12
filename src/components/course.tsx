@@ -1,4 +1,4 @@
-export {}
+export {
 /*export class Course {
     private name: string;
     private credits: number;
@@ -45,3 +45,4 @@ export {}
 var cisc200 = new Course("cisc200", 3, "this is an intermediate sample class!", [cisc100]);
 console.log(cisc100.cName, cisc100.cCredits, cisc100.cDescription);
 console.log(cisc200.cName, cisc200.cCredits, cisc200.cDescription, cisc200.cPrereq);*/
+}
