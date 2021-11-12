@@ -11,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
     return (
-        /* what the dog doin */
         <DndProvider backend={HTML5Backend}>
             <div className="App">
                 <Sidebar></Sidebar>
