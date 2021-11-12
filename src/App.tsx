@@ -18,7 +18,7 @@ function App(): JSX.Element {
                 <Box></Box>
             </div>
         </DndProvider>
-    );
+    ); 
 }
 
 export default App;
