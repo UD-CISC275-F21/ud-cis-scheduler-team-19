@@ -1,10 +1,67 @@
+import Dropdown from "react-bootstrap/Dropdown";
+import FormControl from "react-bootstrap/FormControl";
 import React, { useState } from "react";
 import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
+import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar(): JSX.Element {
+export function Sidebar({ courseList, setCourseList }: 
+{
+    courseList: Course[], setCourseList: (c: Course[]) => void
+}): JSX.Element {
+    //let index = 0;
+    type CustomToggleProps = {
+        children?: React.ReactNode;
+        onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => unknown;
+    };
+    type CustomMenuProps = {
+        children?: React.ReactNode;
+        style?: React.CSSProperties;
+        className?: string;
+        labeledBy?: string;
+    };
     const [isSidebarActive, setIsSidebarActive] = useState(true);
+    const CustomToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => {
+        return <a
+            href=""
+            ref={ref}
+            onClick={(e) => {
+                e.preventDefault();
+                if (props.onClick){
+                    props.onClick(e);
+                }
+            }}
+        >
+            {props.children}
+            &#x25bc;
+        </a>;
+    });
+    CustomToggle.displayName = "CustomToggle";
+    const CustomMenu = React.forwardRef<HTMLInputElement>((props: CustomMenuProps, ref: React.Ref<HTMLDivElement>) => {
+        const [value, setValue] = useState("");
+        return (
+            <div
+                ref={ref}
+                style={props.style}
+                className={props.className}
+                aria-labelledby={props.labeledBy}
+            >
+                <FormControl
+                    autoFocus
+                    className="mx-3 my-2 w-auto"
+                    placeholder="Type to filter..."
+                    onChange={(e) => setValue(e.target.value)}
+                    value={value}
+                />
+                <ul className="list-unstyled">
+                    {React.Children.toArray(props.children)}
+                </ul>
+            </div>
+        );
+    },
+    );
+    CustomMenu.displayName = "CustomMenu";  
     const TheSidebar = () => 
         <nav id="sidebar">
             <div className="sidebar-header">
@@ -12,37 +69,38 @@ export function Sidebar(): JSX.Element {
             </div>
             <ul className="list-unstyled components">
                 <p>Classes</p>
-                <li className="active">
-                    <a href="#ciscSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">CISC</a>
-                    <ul className="collapse list-unstyled" id="ciscSubmenu">
-                        <li>
-                            aaa
-                        </li>
-                        <li>
-                            bbb
-                        </li>
-                        <li>
+                <Dropdown>
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                        <div className="selection-title">
+                            CISC
+                        </div>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu as={CustomMenu}>
+                        <Dropdown.Item eventKey="1">aaa</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">bbb</Dropdown.Item>
+                        <Dropdown.Item eventKey="3" active>
                             ccc
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#mathSubmenu" data-toggle="collapse" aria-expanded="false" className="dropdown-toggle">MATH</a>
-                    <ul className="collapse list-unstyled" id="mathSubmenu">
-                        <li>
-                            <a href="#">aaa</a>
-                        </li>
-                        <li>
-                            <a href="#">bbb</a>
-                        </li>
-                        <li>
-                            <a href="#">ccc</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Other</a>
-                </li>
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="1">ddd</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown>
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components2">
+                        <div className="selection-title">
+                            MATH
+                        </div>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu as={CustomMenu}>
+                        <Dropdown.Item eventKey="1">eee</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">fff</Dropdown.Item>
+                        <Dropdown.Item eventKey="3" active>
+                            ggg
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="1">hhh</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
             </ul>
         </nav>
     ;

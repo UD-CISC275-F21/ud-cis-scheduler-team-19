@@ -134,8 +134,9 @@ a, a:hover, a:focus {
   padding: 5px;
 }
 
-#sidebar ul li a {
-  padding: 10px;
+.selection-title {
+  color: #fff;
+  padding: 5px;
   font-size: 1.1em;
   display: block;
 }
