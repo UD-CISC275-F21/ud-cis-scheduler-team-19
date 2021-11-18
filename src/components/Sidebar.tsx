@@ -61,7 +61,18 @@ export function Sidebar({ courseList, setCourseList }:
         );
     },
     );
-    CustomMenu.displayName = "CustomMenu";  
+    CustomMenu.displayName = "CustomMenu"; 
+    
+    function coursePrinter(): JSX.Element[] {
+        const courses = [];
+        let key: string;
+        for(let i = 0; i < courseList.length; i++){
+            key = (i+1).toString();
+            courses.push(<Dropdown.Item eventKey={key}>{courseList[i].prefix}</Dropdown.Item>);
+        }
+        return courses;
+    }
+
     const TheSidebar = () => 
         <nav id="sidebar">
             <div className="sidebar-header">
@@ -77,12 +88,7 @@ export function Sidebar({ courseList, setCourseList }:
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu as={CustomMenu}>
-                        <Dropdown.Item eventKey="1">aaa</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">bbb</Dropdown.Item>
-                        <Dropdown.Item eventKey="3" active>
-                            ccc
-                        </Dropdown.Item>
-                        <Dropdown.Item eventKey="1">ddd</Dropdown.Item>
+                        {coursePrinter}
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
