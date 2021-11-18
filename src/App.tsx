@@ -18,7 +18,7 @@ function App(): JSX.Element {
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <Sidebar courseList={courseList} setCourseList={setCourseList}></Sidebar>
+                <Sidebar></Sidebar>
                 <Box></Box>
             </div>
         </DndProvider>
