@@ -14,7 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
     //const [schedule, setSchedule] = useState<Course[]>();
-    const [courseList, setCourseList] = useState<Course[]>(Object.values(COURSELIST["CISC"][0]));
+    //const [courseList, setCourseList] = useState<Course[]>(Object.values(COURSELIST["CISC"][0]));
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
