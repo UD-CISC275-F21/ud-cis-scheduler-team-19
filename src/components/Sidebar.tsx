@@ -6,10 +6,10 @@ import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar(/*{ courseList, setCourseList }:*/ 
+export function Sidebar(/*{ courseList, setCourseList }:
 {
     courseList: Course[], setCourseList: (c: Course[]) => void
-}): JSX.Element {
+}*/): JSX.Element {
     //let index = 0;
     type CustomToggleProps = {
         children?: React.ReactNode;
