@@ -3,7 +3,7 @@ import FormControl from "react-bootstrap/FormControl";
 import React, { useState } from "react";
 import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
-import { Course } from "../interfaces/course";
+//import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 export function Sidebar(/*{ courseList, setCourseList }:
