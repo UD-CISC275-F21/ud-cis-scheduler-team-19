@@ -13,7 +13,7 @@
             }
         },
         {
-            "ACCT 200": {
+            "ACCT 200": { 
                 "prefix": "ACCT 200",
                 "name": "Survey of Accounting",
                 "description": "Survey of financial and managerial accounting concepts for the non-business major. Students learn about financial statements for merchandising, manufacturing, and service companies. Topics include: accounting cycle, budgeting, standard costing, contribution margins, cost-volume-profit analysis, and decision making.",
