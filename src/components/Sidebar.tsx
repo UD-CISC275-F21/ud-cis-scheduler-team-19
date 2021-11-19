@@ -6,10 +6,11 @@ import { SemesterTable } from "./SemesterTable";
 //import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar(/*{ courseList, setCourseList }:
+export function Sidebar({ courseList, setCourseList, schedule, setSchedule }: 
 {
-    courseList: Course[], setCourseList: (c: Course[]) => void
-}*/): JSX.Element {
+    courseList: Course[], setCourseList: (c: Course[]) => void,
+    schedule: Course[], setSchedule: (c: Course[]) => void
+}): JSX.Element {
     //let index = 0;
     type CustomToggleProps = {
         children?: React.ReactNode;
@@ -61,7 +62,18 @@ export function Sidebar(/*{ courseList, setCourseList }:
         );
     },
     );
-    CustomMenu.displayName = "CustomMenu";  
+    CustomMenu.displayName = "CustomMenu"; 
+
+    function onClick(course: Course) {
+        setSchedule([...schedule, course]);
+    }
+    
+    function coursePrinter() {
+        return courseList.map((item, index) => (
+            <Dropdown.Item eventKey={index} onClick={() => onClick(item)} key={index}>{item.prefix}</Dropdown.Item>
+        ));
+    }
+
     const TheSidebar = () => 
         <nav id="sidebar">
             <div className="sidebar-header">
@@ -77,12 +89,7 @@ export function Sidebar(/*{ courseList, setCourseList }:
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu as={CustomMenu}>
-                        <Dropdown.Item eventKey="1">aaa</Dropdown.Item>
-                        <Dropdown.Item eventKey="2">bbb</Dropdown.Item>
-                        <Dropdown.Item eventKey="3" active>
-                            ccc
-                        </Dropdown.Item>
-                        <Dropdown.Item eventKey="1">ddd</Dropdown.Item>
+                        {coursePrinter()}
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
@@ -136,10 +143,10 @@ export function Sidebar(/*{ courseList, setCourseList }:
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
+                        <SemesterTable schedule={schedule} setSchedule={setSchedule}></SemesterTable>
                         <Button onClick={addSemester} type="button" id="addsemesterbtn">
                             Add Semester
                         </Button>
-                        <SemesterTable></SemesterTable>
                     </div>
                 </Row>
             </div>
