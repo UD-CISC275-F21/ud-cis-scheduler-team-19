@@ -114,6 +114,7 @@ export function Sidebar(/*{ courseList, setCourseList }:
 
     function addSemester(){
         <SemesterTable></SemesterTable>
+        return;
     }
 
     return (
