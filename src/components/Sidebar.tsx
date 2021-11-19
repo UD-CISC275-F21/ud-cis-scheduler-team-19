@@ -133,7 +133,10 @@ export function Sidebar(/*{ courseList, setCourseList }:
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
-                        <Button type="button" id="addsemesterbtn"></Button>
+                        <Button type="button" id="addsemesterbtn">
+                            Add Semester
+                        <SemesterTable></SemesterTable>
+                        </Button>
                         <SemesterTable></SemesterTable>
                     </div>
                 </Row>
