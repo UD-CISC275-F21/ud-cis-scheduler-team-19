@@ -112,9 +112,6 @@ export function Sidebar(/*{ courseList, setCourseList }:
         }
     }
 
-    function addSemester(){
-        <SemesterTable></SemesterTable>
-    }
 
     return (
         <Row>
@@ -136,7 +133,7 @@ export function Sidebar(/*{ courseList, setCourseList }:
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
-                        <Button onClick={addSemester} type="button" id="addsemesterbtn" classname="btn btn-info"></Button>
+                        <Button type="button" id="addsemesterbtn"></Button>
                         <SemesterTable></SemesterTable>
                     </div>
                 </Row>
