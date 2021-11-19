@@ -3,12 +3,12 @@ import FormControl from "react-bootstrap/FormControl";
 import React, { useState } from "react";
 import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
-//import { Course } from "../interfaces/course";
+import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar({ courseList, setCourseList, schedule, setSchedule }: 
+export function Sidebar({ courseList, schedule, setSchedule }: 
 {
-    courseList: Course[], setCourseList: (c: Course[]) => void,
+    courseList: Course[],
     schedule: Course[], setSchedule: (c: Course[]) => void
 }): JSX.Element {
     //let index = 0;
@@ -68,10 +68,14 @@ export function Sidebar({ courseList, setCourseList, schedule, setSchedule }:
         setSchedule([...schedule, course]);
     }
     
-    function coursePrinter() {
-        return courseList.map((item, index) => (
-            <Dropdown.Item eventKey={index} onClick={() => onClick(item)} key={index}>{item.prefix}</Dropdown.Item>
-        ));
+    function coursePrinter(): JSX.Element[] {
+        const courses = [];
+        let key: string;
+        for(let i = 0; i < courseList.length; i++){
+            key = (i+1).toString();
+            courses.push(<Dropdown.Item onClick={() => onClick(courseList[i])} eventKey={key}>{courseList[i].prefix}</Dropdown.Item>);
+        }
+        return courses;
     }
 
     const TheSidebar = () => 
@@ -120,7 +124,7 @@ export function Sidebar({ courseList, setCourseList, schedule, setSchedule }:
     }
 
     function addSemester(){
-        return <div><SemesterTable></SemesterTable></div>;
+        return <div><SemesterTable schedule={schedule}></SemesterTable></div>;
     }
 
     return (
@@ -143,7 +147,7 @@ export function Sidebar({ courseList, setCourseList, schedule, setSchedule }:
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
-                        <SemesterTable schedule={schedule} setSchedule={setSchedule}></SemesterTable>
+                        <SemesterTable schedule={schedule}></SemesterTable>
                         <Button onClick={addSemester} type="button" id="addsemesterbtn">
                             Add Semester
                         </Button>

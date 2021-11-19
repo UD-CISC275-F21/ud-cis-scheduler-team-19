@@ -4,9 +4,9 @@ import { Sidebar } from "./components/Sidebar";
 import { Box } from "./components/DragnDrop";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-//import COURSELIST from "./components/courselist.json";
-//import { useState } from "react";
-//import { Course } from "./interfaces/course";
+import COURSELIST from "./components/courselist.json";
+import { useState } from "react";
+import { Course } from "./interfaces/course";
 //import { SemesterTable } from "./components/SemesterTable";
 //import { Row } from "react-bootstrap";
 import "./App.css";
@@ -18,7 +18,7 @@ function App(): JSX.Element {
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <Sidebar courseList={courseList} setCourseList={setCourseList} schedule={schedule} setSchedule={setSchedule}></Sidebar>
+                <Sidebar courseList={courseList} schedule={schedule} setSchedule={setSchedule}></Sidebar>
                 <Box></Box>
             </div>
         </DndProvider>

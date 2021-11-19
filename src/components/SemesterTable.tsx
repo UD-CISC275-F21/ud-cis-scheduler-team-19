@@ -2,9 +2,9 @@ import React from "react";
 import { Row, Table } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
-export function SemesterTable({ schedule, setSchedule }:
+export function SemesterTable({ schedule }:
 {
-    schedule: Course[], setSchedule: (c: Course[]) => void
+    schedule: Course[]
 }): JSX.Element {
     return <Row>
         <Table className="table table-striped">
