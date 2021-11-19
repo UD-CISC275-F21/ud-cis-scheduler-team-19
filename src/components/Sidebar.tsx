@@ -3,7 +3,7 @@ import FormControl from "react-bootstrap/FormControl";
 import React, { useState } from "react";
 import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
-import { Course } from "../interfaces/course";
+//import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 export function Sidebar({ courseList, setCourseList, schedule, setSchedule }: 
@@ -118,6 +118,11 @@ export function Sidebar({ courseList, setCourseList, schedule, setSchedule }:
             setIsSidebarActive(true);
         }
     }
+
+    function addSemester(){
+        return <div><SemesterTable></SemesterTable></div>;
+    }
+
     return (
         <Row>
             <div className="wrapper">
@@ -139,6 +144,9 @@ export function Sidebar({ courseList, setCourseList, schedule, setSchedule }:
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
                         <SemesterTable schedule={schedule} setSchedule={setSchedule}></SemesterTable>
+                        <Button onClick={addSemester} type="button" id="addsemesterbtn">
+                            Add Semester
+                        </Button>
                     </div>
                 </Row>
             </div>
