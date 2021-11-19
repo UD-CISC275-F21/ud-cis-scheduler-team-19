@@ -13,12 +13,12 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
-    //const [schedule, setSchedule] = useState<Course[]>();
+    const [schedule, setSchedule] = useState<Course[]>([]);
     const [courseList, setCourseList] = useState<Course[]>(Object.values(COURSELIST["CISC"][0]));
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <Sidebar courseList={courseList} setCourseList={setCourseList}></Sidebar>
+                <Sidebar courseList={courseList} setCourseList={setCourseList} schedule={schedule} setSchedule={setSchedule}></Sidebar>
                 <Box></Box>
             </div>
         </DndProvider>

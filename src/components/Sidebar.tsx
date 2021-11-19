@@ -6,9 +6,10 @@ import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar({ courseList, setCourseList }: 
+export function Sidebar({ courseList, setCourseList, schedule, setSchedule }: 
 {
-    courseList: Course[], setCourseList: (c: Course[]) => void
+    courseList: Course[], setCourseList: (c: Course[]) => void,
+    schedule: Course[], setSchedule: (c: Course[]) => void
 }): JSX.Element {
     //let index = 0;
     type CustomToggleProps = {
@@ -62,15 +63,15 @@ export function Sidebar({ courseList, setCourseList }:
     },
     );
     CustomMenu.displayName = "CustomMenu"; 
+
+    function onClick(course: Course) {
+        setSchedule([...schedule, course]);
+    }
     
-    function coursePrinter(): JSX.Element[] {
-        const courses = [];
-        let key: string;
-        for(let i = 0; i < courseList.length; i++){
-            key = (i+1).toString();
-            courses.push(<Dropdown.Item eventKey={key}>{courseList[i].prefix}</Dropdown.Item>);
-        }
-        return courses;
+    function coursePrinter() {
+        return courseList.map((item, index) => (
+            <Dropdown.Item eventKey={index} onClick={() => onClick(item)} key={index}>{item.prefix}</Dropdown.Item>
+        ));
     }
 
     const TheSidebar = () => 
@@ -88,7 +89,7 @@ export function Sidebar({ courseList, setCourseList }:
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu as={CustomMenu}>
-                        {coursePrinter}
+                        {coursePrinter()}
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
@@ -137,7 +138,7 @@ export function Sidebar({ courseList, setCourseList }:
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
-                        <SemesterTable></SemesterTable>
+                        <SemesterTable schedule={schedule} setSchedule={setSchedule}></SemesterTable>
                     </div>
                 </Row>
             </div>
