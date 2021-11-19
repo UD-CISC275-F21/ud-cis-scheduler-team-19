@@ -113,7 +113,7 @@ export function Sidebar(/*{ courseList, setCourseList }:
     }
 
     function addSemester(){
-        return(<SemesterTable></SemesterTable>);
+        return <SemesterTable></SemesterTable>;
     }
 
     return (
