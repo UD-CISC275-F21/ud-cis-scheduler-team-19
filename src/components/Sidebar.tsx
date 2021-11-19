@@ -135,7 +135,7 @@ export function Sidebar(/*{ courseList, setCourseList }:
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
                         <Button type="button" id="addsemesterbtn">
                             Add Semester
-                        <SemesterTable></SemesterTable>
+                            <SemesterTable></SemesterTable>
                         </Button>
                         <SemesterTable></SemesterTable>
                     </div>
