@@ -14,7 +14,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App(): JSX.Element {
     const [schedule, setSchedule] = useState<Course[]>([]);
-    const [courseList] = useState<Course[]>(Object.values(COURSELIST["CISC"][0]));
+    const [courseList] = useState<Course[]>([]);
+    for(let i = 0; i<COURSELIST["CISC"].length; i++){
+        const [tempList] = useState<Course[]>(Object.values(COURSELIST["CISC"][i]));
+        courseList.push(tempList[0]);
+    }
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
