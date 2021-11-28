@@ -6,12 +6,14 @@ import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar({ courseList, schedule, setSchedule }: 
+export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAllSchedules }: 
 {
     courseList: Course[],
-    schedule: Course[], setSchedule: (c: Course[]) => void
+    schedule: Course[], 
+    setSchedule: (c: Course[]) => void,
+    allSchedules: Course[][],
+    setAllSchedules: (c: Course[][]) => void
 }): JSX.Element {
-    //let index = 0;
     type CustomToggleProps = {
         children?: React.ReactNode;
         onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => unknown;
@@ -23,6 +25,7 @@ export function Sidebar({ courseList, schedule, setSchedule }:
         labeledBy?: string;
     };
     const [isSidebarActive, setIsSidebarActive] = useState(true);
+    const [semesterAdded, setSemesterAdded] = useState(1);
     const CustomToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => {
         return <a
             href=""
@@ -66,6 +69,9 @@ export function Sidebar({ courseList, schedule, setSchedule }:
 
     function onClick(course: Course) {
         setSchedule([...schedule, course]);
+        if(schedule.length > 0 && schedule.length % 5 == 0){
+            setAllSchedules([...allSchedules, schedule]);
+        }
     }
     
     function coursePrinter(): JSX.Element[] {
@@ -115,7 +121,7 @@ export function Sidebar({ courseList, schedule, setSchedule }:
             </ul>
         </nav>
     ;
-    function buttonHandler() {
+    function sidebarHandler() {
         if(isSidebarActive){
             setIsSidebarActive(false);
         }else{
@@ -123,10 +129,20 @@ export function Sidebar({ courseList, schedule, setSchedule }:
         }
     }
 
-    function addSemester(){
-        return <div><SemesterTable schedule={schedule}></SemesterTable></div>;
+    function semesterHandler() {
+        const semesters = [];
+        let key: string;
+        for(let i = 0; i < semesterAdded-1; i++){
+            key = (i+1).toString();
+            semesters.push(<SemesterTable schedule={schedule} key={key}></SemesterTable>);
+        }
+        return semesters;
     }
 
+    function addSemester(){
+        setSemesterAdded(semesterAdded+1);
+    }
+    
     return (
         <Row>
             <div className="wrapper">
@@ -135,7 +151,7 @@ export function Sidebar({ courseList, schedule, setSchedule }:
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <div className="container-fluid">
                             <Row>
-                                <Button onClick={buttonHandler} type="button" id="sidebarCollapse" className="btn btn-info">
+                                <Button onClick={sidebarHandler} type="button" id="sidebarCollapse" className="btn btn-info">
                                     <i className="fas fa-align-left"></i>
                                     <span>Toggle Sidebar</span>
                                 </Button>
@@ -148,6 +164,7 @@ export function Sidebar({ courseList, schedule, setSchedule }:
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
                         <SemesterTable schedule={schedule}></SemesterTable>
+                        { semesterAdded ? semesterHandler() : null }
                         <Button onClick={addSemester} type="button" id="addsemesterbtn">
                             Add Semester
                         </Button>
