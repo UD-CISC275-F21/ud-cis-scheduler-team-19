@@ -4,15 +4,16 @@ import React, { useState } from "react";
 import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
+import { CourseModal } from "./CourseModal";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAllSchedules }: 
+export function ControlPanel({ courseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
     courseList: Course[],
-    schedule: Course[], 
-    setSchedule: (c: Course[]) => void,
     allSchedules: Course[][],
-    setAllSchedules: (c: Course[][]) => void
+    setAllSchedules: (c: Course[][]) => void,
+    visible: boolean,
+    setVisible: (b: boolean) => void
 }): JSX.Element {
     type CustomToggleProps = {
         children?: React.ReactNode;
@@ -26,6 +27,7 @@ export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAl
     };
     const [isSidebarActive, setIsSidebarActive] = useState(true);
     const [semesterAdded, setSemesterAdded] = useState(1);
+    const [currentCourse, setCurrentCourse] = useState<Course>(courseList[0]);
     const CustomToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => {
         return <a
             href=""
@@ -68,10 +70,8 @@ export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAl
     CustomMenu.displayName = "CustomMenu"; 
 
     function onClick(course: Course) {
-        setSchedule([...schedule, course]);
-        if(schedule.length > 0 && schedule.length % 5 == 0){
-            setAllSchedules([...allSchedules, schedule]);
-        }
+        setCurrentCourse(course);
+        setVisible(true);
     }
     
     function coursePrinter(): JSX.Element[] {
@@ -134,13 +134,29 @@ export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAl
         let key: string;
         for(let i = 0; i < semesterAdded-1; i++){
             key = (i+1).toString();
-            semesters.push(<SemesterTable schedule={schedule} key={key}></SemesterTable>);
+            semesters.push(<SemesterTable schedule={allSchedules[i]} key={key}></SemesterTable>);
         }
         return semesters;
     }
 
+    function modalHandler() {
+        if(visible){
+            return <CourseModal course={currentCourse} visible={visible} setVisible={setVisible} semesterAdded={semesterAdded} allSchedules={allSchedules}></CourseModal>;
+        }
+    }
+
     function addSemester(){
         setSemesterAdded(semesterAdded+1);
+        allSchedules.push([]);
+    }
+
+    function removeSemester(){
+        const newSchedules = [];
+        setSemesterAdded(semesterAdded-1);
+        for(let i = 0; i < semesterAdded-2; i++){
+            newSchedules.push(allSchedules[i]);
+        }
+        setAllSchedules(newSchedules);
     }
     
     return (
@@ -163,11 +179,19 @@ export function Sidebar({ courseList, schedule, setSchedule, allSchedules, setAl
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
-                        <SemesterTable schedule={schedule}></SemesterTable>
+                        <p>Welcome to the UD CIS Scheduler! Click on the add semester button to add your first semester and get started!</p> 
+                        <p>-Select classes from the Sidebar; You can change the course name and choose which semester to add the course to a semester (Press Save Changes to apply)</p>
+                        <p>-Keep clicking add semester to add more semester tables.</p>
+                        <p>-Click remove semester to remove a table</p>
+                        <p>-Course information is viewable when you click on one</p>
                         { semesterAdded ? semesterHandler() : null }
                         <Button onClick={addSemester} type="button" id="addsemesterbtn">
                             Add Semester
                         </Button>
+                        <Button onClick={removeSemester} type="button" id="addsemesterbtn">
+                            Remove Semester
+                        </Button>
+                        { visible ? modalHandler() : null}
                     </div>
                 </Row>
             </div>
