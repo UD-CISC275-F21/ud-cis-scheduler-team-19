@@ -7,4 +7,5 @@ export interface Course {
     limits: string
     breadth: string
     terms: string
+    semester: string
 }

@@ -6,6 +6,15 @@ export function SemesterTable({ schedule }:
 {
     schedule: Course[]
 }): JSX.Element {
+    function calcCredits(){
+        let credits = 0;
+        for(let i = 0; i < 5; i++){
+            if (schedule[i] != null){
+                credits += parseInt(schedule[i].credits);
+            }
+        }
+        return credits;
+    }
     return <Row>
         <Table className="table table-striped">
             <thead>
@@ -49,5 +58,6 @@ export function SemesterTable({ schedule }:
                 </tr>
             </tbody>
         </Table>
+        <p>Total Credits: {calcCredits()}</p>
     </Row>;
 }

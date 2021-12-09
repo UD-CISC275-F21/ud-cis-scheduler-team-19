@@ -11,6 +11,7 @@ export function CourseModal({course, visible, setVisible, semesterAdded, allSche
     allSchedules: Course[][]
 }): JSX.Element {
     const [name, setName] = useState<string>(course.name);
+    const [description, setDescription] = useState<string>(course.description);
     const semester = [];
     const [currentSemester, setCurrentSemester] = useState("");
     for(let i = 1; i <= semesterAdded; i++){
@@ -18,6 +19,8 @@ export function CourseModal({course, visible, setVisible, semesterAdded, allSche
     }
     function save() {
         course.name = name;
+        course.semester = currentSemester;
+        course.description = description;
         setVisible(false);
         allSchedules[parseInt(currentSemester)-1].push(course);
     }
@@ -66,8 +69,10 @@ export function CourseModal({course, visible, setVisible, semesterAdded, allSche
                         <Form.Label>Terms: {course.terms}</Form.Label>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="CourseForm.description">
-                        <p>Course Description:</p>
-                        <p>{course.description}</p>
+                        <Form.Label>Course Description:</Form.Label>
+                        <Form.Control as="textarea" rows={3}
+                            value={description}
+                            onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(ev.target.value)}/>
                     </Form.Group>
                 </Form>
 
