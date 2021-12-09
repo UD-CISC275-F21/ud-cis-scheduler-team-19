@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Course } from "./interfaces/course";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Reqcheck from "./components/RequirementChecker";
 
 function App(): JSX.Element {
     const [schedule] = useState<Course[]>([]);
@@ -32,6 +33,7 @@ function App(): JSX.Element {
             <div className="App">
                 <ControlPanel ciscCourseList={ciscCourseList} mathCourseList={mathCourseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
                 <Box></Box>
+                <Reqcheck>Reqcheck</Reqcheck>
             </div>
         </DndProvider>
     ); 
