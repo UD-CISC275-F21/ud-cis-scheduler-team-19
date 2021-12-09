@@ -16,17 +16,24 @@ function App(): JSX.Element {
     const [schedule] = useState<Course[]>([]);
     const [allSchedules, setAllSchedules] = useState<Course[][]>([schedule]);
     const [visible, setVisible] = useState(false);
-    const [courseList] = useState<Course[]>([]);
+    const [ciscCourseList] = useState<Course[]>([]);
+    const [mathCourseList] = useState<Course[]>([]);
     for(let i = 0; i<COURSELIST["CISC"].length; i++){
         const [tempList] = useState<Course[]>(Object.values(COURSELIST["CISC"][i]));
-        if(courseList.length < COURSELIST["CISC"].length){
-            courseList.push(tempList[0]);
+        if(ciscCourseList.length < COURSELIST["CISC"].length){
+            ciscCourseList.push(tempList[0]);
+        }
+    }
+    for(let i = 0; i<COURSELIST["MATH"].length; i++){
+        const [tempList] = useState<Course[]>(Object.values(COURSELIST["MATH"][i]));
+        if(mathCourseList.length < COURSELIST["MATH"].length){
+            mathCourseList.push(tempList[0]);
         }
     }
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <ControlPanel courseList={courseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
+                <ControlPanel ciscCourseList={ciscCourseList} mathCourseList={mathCourseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
                 <Box></Box>
             </div>
         </DndProvider>
