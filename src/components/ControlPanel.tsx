@@ -197,7 +197,9 @@ export function ControlPanel({ courseList, allSchedules, setAllSchedules, visibl
                         { visible ? modalHandler() : null}
                     </div>
                 </Row>
+                {Reqcheck}
             </div>
+            
         </Row>
     );
 }
