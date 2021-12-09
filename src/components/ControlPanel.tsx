@@ -6,7 +6,6 @@ import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
 import { CSVLink } from "react-csv";
-//import { findRenderedComponentWithType } from "react-dom/test-utils";
 
 export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
