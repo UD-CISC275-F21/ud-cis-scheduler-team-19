@@ -5,7 +5,7 @@ import { Row, Accordion, Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
-import Reqcheck from "./RequirementChecker";
+//import Reqcheck from "./RequirementChecker";
 import { CSVLink } from "react-csv";
 
 export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
