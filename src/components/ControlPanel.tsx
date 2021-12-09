@@ -7,6 +7,7 @@ import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
 import Reqcheck from "./RequirementChecker";
+import { CSVLink } from "react-csv";
 
 export function ControlPanel({ courseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
