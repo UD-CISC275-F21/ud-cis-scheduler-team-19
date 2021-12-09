@@ -1,28 +1,28 @@
 import React from "react";
 
 const reqlist : string[] = [
-  "CISC108",
-  "CISC181",
-  "CISC210",
-  "CISC220",
-  "CISC260",
-  "CISC275",
-  "CISC303",
-  "CISC320",
-  "CISC361",
-  "CISC372",
-  "300 (Or Above) Technical Elective 1",
-  "300 (Or Above) Technical Elective 2",
-  "Focus Area Course 1",
-  "Focus Area Course 2",
-  "Focus Area Course 3",
-  "Focus Area Course 4",
-  "MATH205 or MATH350",
-  "MATH210",
-  "MATH241",
-  "MATH242",
-  "Capstone",
-  "Twelve Credits of Laboratory Science"
+    "CISC108",
+    "CISC181",
+    "CISC210",
+    "CISC220",
+    "CISC260",
+    "CISC275",
+    "CISC303",
+    "CISC320",
+    "CISC361",
+    "CISC372",
+    "300 (Or Above) Technical Elective 1",
+    "300 (Or Above) Technical Elective 2",
+    "Focus Area Course 1",
+    "Focus Area Course 2",
+    "Focus Area Course 3",
+    "Focus Area Course 4",
+    "MATH205 or MATH350",
+    "MATH210",
+    "MATH241",
+    "MATH242",
+    "Capstone",
+    "Twelve Credits of Laboratory Science"
   ];
 
 const Reqcheck: React.FunctionComponent = () => {
@@ -34,7 +34,7 @@ const Reqcheck: React.FunctionComponent = () => {
             <span>
               <input type="checkbox"/>
             </span>
-          </div> 
+          </div>; 
           })}
     </div>
   );
