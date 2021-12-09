@@ -33,7 +33,7 @@ function App(): JSX.Element {
             <div className="App">
                 <ControlPanel ciscCourseList={ciscCourseList} mathCourseList={mathCourseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
                 <Box></Box>
-                <Reqcheck>Reqcheck</Reqcheck>
+                <Reqcheck>{Reqcheck}</Reqcheck>
             </div>
         </DndProvider>
     ); 
