@@ -5,13 +5,12 @@ import { Row,/* Col, */Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
-import { CSVLink } from "react-csv";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
+import Reqcheck from "./RequirementChecker";
 
-export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
+export function ControlPanel({ courseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
-    ciscCourseList: Course[],
-    mathCourseList: Course[],
+    courseList: Course[],
     allSchedules: Course[][],
     setAllSchedules: (c: Course[][]) => void,
     visible: boolean,
@@ -29,7 +28,7 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
     };
     const [isSidebarActive, setIsSidebarActive] = useState(true);
     const [semesterAdded, setSemesterAdded] = useState(1);
-    const [currentCourse, setCurrentCourse] = useState<Course>(ciscCourseList[0]);
+    const [currentCourse, setCurrentCourse] = useState<Course>(courseList[0]);
     const CustomToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => {
         return <a
             href=""
@@ -76,34 +75,14 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
         setVisible(true);
     }
     
-    function ciscCoursePrinter(): JSX.Element[] {
+    function coursePrinter(): JSX.Element[] {
         const courses = [];
         let key: string;
-        for(let i = 0; i < ciscCourseList.length; i++){
+        for(let i = 0; i < courseList.length; i++){
             key = (i+1).toString();
-            courses.push(<Dropdown.Item onClick={() => onClick(ciscCourseList[i])} eventKey={key}>{ciscCourseList[i].prefix}</Dropdown.Item>);
+            courses.push(<Dropdown.Item onClick={() => onClick(courseList[i])} eventKey={key}>{courseList[i].prefix}</Dropdown.Item>);
         }
         return courses;
-    }
-
-    function mathCoursePrinter(): JSX.Element[] {
-        const courses = [];
-        let key: string;
-        for(let i = 0; i < mathCourseList.length; i++){
-            key = (i+1).toString();
-            courses.push(<Dropdown.Item onClick={() => onClick(mathCourseList[i])} eventKey={key}>{mathCourseList[i].prefix}</Dropdown.Item>);
-        }
-        return courses;
-    }
-
-    function exportedList() {
-        const list = [];
-        for(let i = 0; i < allSchedules.length; i++){
-            for(let j = 0; j < allSchedules[i].length; j++){
-                list.push(allSchedules[i][j]);
-            }
-        }
-        return list;
     }
 
     const TheSidebar = () => 
@@ -121,7 +100,7 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu as={CustomMenu}>
-                        {ciscCoursePrinter()}
+                        {coursePrinter()}
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown>
@@ -132,7 +111,12 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu as={CustomMenu}>
-                        {mathCoursePrinter()}
+                        <Dropdown.Item eventKey="1">eee</Dropdown.Item>
+                        <Dropdown.Item eventKey="2">fff</Dropdown.Item>
+                        <Dropdown.Item eventKey="3" active>
+                            ggg
+                        </Dropdown.Item>
+                        <Dropdown.Item eventKey="1">hhh</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </ul>
@@ -209,11 +193,13 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                         <Button onClick={removeSemester} type="button" id="addsemesterbtn" className="btn btn-danger">
                             Remove Semester
                         </Button>
-                        <Button className="btn btn-dark"><CSVLink data={exportedList()}>Download Full List</CSVLink></Button>
+                        <Button className="btn btn-dark"><CSVLink data={exportedList()}>Download Full List</CSVLink></Button>      
                         { visible ? modalHandler() : null}
                     </div>
                 </Row>
+                {Reqcheck}
             </div>
+            
         </Row>
     );
 }
