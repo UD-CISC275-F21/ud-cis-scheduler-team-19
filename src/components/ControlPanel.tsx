@@ -5,7 +5,6 @@ import { Row, Accordion, Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
-import Reqcheck from "./RequirementChecker";
 import { CSVLink } from "react-csv";
 
 export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
@@ -226,9 +225,6 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                             Remove Semester
                         </Button>
                         <Button className="btn btn-dark"><CSVLink data={exportedList()}>Download Full List</CSVLink></Button>
-                        <Button onClick={Reqcheck} type = "button" id="addsemesterbtn" className="btn requirements">
-                            Show Degree Requirements
-                        </Button>
                         { visible ? modalHandler() : null}
                     </div>
                         
