@@ -7,6 +7,8 @@ import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
 import { CSVLink } from "react-csv";
 //import { findRenderedComponentWithType } from "react-dom/test-utils";
+import Reqcheck from "./RequirementChecker"
+
 
 export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
