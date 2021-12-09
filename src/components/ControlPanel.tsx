@@ -195,7 +195,7 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                 <Row>
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
-                        <h4>Christopher Bao, Trent Littleton, Alex Daley</h4>
+                        <h4>Christopher Bao, Trent Littleton</h4>
                         <p>Welcome to the Scheduler! Click on the add semester button to add your first semester and get started!</p> 
                         <p>-Select classes from the Sidebar; You can change the course name and choose which semester to add the course to a semester (Press Save Changes to apply)</p>
                         <p>-Keep clicking add semester to add more semester tables.</p>
