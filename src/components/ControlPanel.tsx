@@ -1,7 +1,7 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
-import React, { useState } from "react";
-import { Row,/* Col, */Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Row, Accordion, Button } from "react-bootstrap";
 import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
@@ -28,6 +28,7 @@ export function ControlPanel({ courseList, allSchedules, setAllSchedules, visibl
         labeledBy?: string;
     };
     const [isSidebarActive, setIsSidebarActive] = useState(true);
+    const [isRemoved, setIsRemoved] = useState(false);
     const [semesterAdded, setSemesterAdded] = useState(1);
     const [currentCourse, setCurrentCourse] = useState<Course>(courseList[0]);
     const CustomToggle = React.forwardRef((props: CustomToggleProps, ref: React.Ref<HTMLAnchorElement>) => {
@@ -136,7 +137,7 @@ export function ControlPanel({ courseList, allSchedules, setAllSchedules, visibl
         let key: string;
         for(let i = 0; i < semesterAdded-1; i++){
             key = (i+1).toString();
-            semesters.push(<SemesterTable schedule={allSchedules[i]} key={key}></SemesterTable>);
+            semesters.push(<SemesterTable schedule={allSchedules[i]} allSchedules={allSchedules} index={i} setIsRemoved={setIsRemoved} key={key}></SemesterTable>);
         }
         return semesters;
     }
@@ -160,6 +161,13 @@ export function ControlPanel({ courseList, allSchedules, setAllSchedules, visibl
         }
         setAllSchedules(newSchedules);
     }
+
+    useEffect(() => {
+        if(isRemoved){
+            semesterHandler();
+            setIsRemoved(false);
+        }
+    });
     
     return (
         <Row>
@@ -181,12 +189,20 @@ export function ControlPanel({ courseList, allSchedules, setAllSchedules, visibl
                     <div className="main">
                         <h1>UD CIS Scheduler</h1>
                         <h4>Christopher Bao, Trent Littleton</h4>
-                        <p>Welcome to the Scheduler! Click on the add semester button to add your first semester and get started!</p> 
-                        <p>-Select classes from the Sidebar; You can change the course name and choose which semester to add the course to a semester (Press Save Changes to apply)</p>
-                        <p>-Keep clicking add semester to add more semester tables.</p>
-                        <p>-Click remove semester to remove a table</p>
-                        <p>-Course information is viewable when you click on one; Full course names and descriptions are editable</p>
-                        <p>-Click on Download Full List to export a .csv file of the schedule</p>
+                        <p>Welcome to the Scheduler! Click on the add semester button to add your first semester and get started!</p>
+                        <Accordion>
+                            <Accordion.Item eventKey="0">
+                                <Accordion.Header>How to use the scheduler</Accordion.Header>
+                                <Accordion.Body>
+                                    <p>-Select classes from the Sidebar; You can change the course name and choose which semester to add the course to a semester (Press Save Changes to apply)</p>
+                                    <p>-Keep clicking add semester to add more semester tables.</p>
+                                    <p>-Click remove semester to remove a table</p>
+                                    <p>-Click remove on a course to remove it from the semester</p>
+                                    <p>-Course information is viewable when you click on one; Full course names and descriptions are editable</p>
+                                    <p>-Click on Download Full List to export a .csv file of the schedule</p>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        </Accordion>
                         { semesterAdded ? semesterHandler() : null }
                         <Button onClick={addSemester} type="button" id="addsemesterbtn" className="btn btn-success">
                             Add Semester
