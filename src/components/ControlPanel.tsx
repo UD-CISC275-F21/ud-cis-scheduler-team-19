@@ -200,15 +200,16 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                         <p>-Select classes from the Sidebar; You can change the course name and choose which semester to add the course to a semester (Press Save Changes to apply)</p>
                         <p>-Keep clicking add semester to add more semester tables.</p>
                         <p>-Click remove semester to remove a table</p>
-                        <p>-Course information is viewable when you click on one</p>
+                        <p>-Course information is viewable when you click on one; Full course names and descriptions are editable</p>
+                        <p>-Click on Download Full List to export a .csv file of the schedule</p>
                         { semesterAdded ? semesterHandler() : null }
-                        <Button onClick={addSemester} type="button" id="addsemesterbtn">
+                        <Button onClick={addSemester} type="button" id="addsemesterbtn" className="btn btn-success">
                             Add Semester
                         </Button>
-                        <Button onClick={removeSemester} type="button" id="addsemesterbtn">
+                        <Button onClick={removeSemester} type="button" id="addsemesterbtn" className="btn btn-danger">
                             Remove Semester
                         </Button>
-                        <CSVLink data={exportedList()}>Download Full List</CSVLink>
+                        <Button className="btn btn-dark"><CSVLink data={exportedList()}>Download Full List</CSVLink></Button>
                         { visible ? modalHandler() : null}
                     </div>
                 </Row>
