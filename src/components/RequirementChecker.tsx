@@ -42,8 +42,8 @@ const Reqcheck: React.FunctionComponent = () => {
 // Styling
 const styles: { [key: string]: React.CSSProperties } = {
     container: {
-        width: 400,
-        position: "fixed",
+        width: 450,
+        position: "relative",
         top: 0,
         right: 0,
     },
