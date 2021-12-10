@@ -42,17 +42,18 @@ const Reqcheck: React.FunctionComponent = () => {
 // Styling
 const styles: { [key: string]: React.CSSProperties } = {
     container: {
-        width: 900,
-        margin: "10px auto",
-        columns: 1,
+        width: 400,
+        position: "fixed",
+        top: 0,
+        right: 0,
     },
     reqItem: {
         width: "50%",
         display: "flex",
         justifyContent: "space-between",
-        margin: "3px 0",
+        margin: "6px 0",
         padding: "8px 15px",
-        backgroundColor: "#1294df",
+        backgroundColor: "#35a1e0",
     },
     courseID: {
         width: "90%",
