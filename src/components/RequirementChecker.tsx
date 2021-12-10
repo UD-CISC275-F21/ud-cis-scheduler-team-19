@@ -44,7 +44,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     container: {
         width: 900,
         margin: "10px auto",
-        columns: 3,
+        columns: 1,
     },
     reqItem: {
         width: "50%",
@@ -52,7 +52,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         justifyContent: "space-between",
         margin: "3px 0",
         padding: "8px 15px",
-        backgroundColor: "#35a1e0",
+        backgroundColor: "#1294df",
     },
     courseID: {
         width: "90%",
