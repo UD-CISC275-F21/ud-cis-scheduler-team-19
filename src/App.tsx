@@ -8,7 +8,6 @@ import { useState } from "react";
 import { Course } from "./interfaces/course";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Reqcheck from "./components/RequirementChecker";
 
 function App(): JSX.Element {
     const [schedule] = useState<Course[]>([]);
@@ -16,6 +15,7 @@ function App(): JSX.Element {
     const [visible, setVisible] = useState(false);
     const [ciscCourseList] = useState<Course[]>([]);
     const [mathCourseList] = useState<Course[]>([]);
+    const [englCourseList] = useState<Course[]>([]);
     for(let i = 0; i<COURSELIST["CISC"].length; i++){
         const [tempList] = useState<Course[]>(Object.values(COURSELIST["CISC"][i]));
         if(ciscCourseList.length < COURSELIST["CISC"].length){
@@ -28,12 +28,17 @@ function App(): JSX.Element {
             mathCourseList.push(tempList[0]);
         }
     }
+    for(let i = 0; i<COURSELIST["ENGL"].length; i++){
+        const [tempList] = useState<Course[]>(Object.values(COURSELIST["ENGL"][i]));
+        if(englCourseList.length < COURSELIST["ENGL"].length){
+            englCourseList.push(tempList[0]);
+        }
+    }
     return (
         <DndProvider backend={HTML5Backend}>
             <div className="App">
-                <ControlPanel ciscCourseList={ciscCourseList} mathCourseList={mathCourseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
+                <ControlPanel ciscCourseList={ciscCourseList} mathCourseList={mathCourseList} englCourseList={englCourseList} allSchedules={allSchedules} setAllSchedules={setAllSchedules} visible={visible} setVisible={setVisible}></ControlPanel>
                 <Box></Box>
-                <Reqcheck>{Reqcheck}</Reqcheck>
             </div>
         </DndProvider>
     ); 

@@ -6,11 +6,13 @@ import { SemesterTable } from "./SemesterTable";
 import { Course } from "../interfaces/course";
 import { CourseModal } from "./CourseModal";
 import { CSVLink } from "react-csv";
+import Reqcheck from "./RequirementChecker";
 
-export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
+export function ControlPanel({ ciscCourseList, mathCourseList, englCourseList, allSchedules, setAllSchedules, visible, setVisible }: 
 {
     ciscCourseList: Course[],
     mathCourseList: Course[],
+    englCourseList: Course[],
     allSchedules: Course[][],
     setAllSchedules: (c: Course[][]) => void,
     visible: boolean,
@@ -96,6 +98,16 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
         return courses;
     }
 
+    function englCoursePrinter(): JSX.Element[] {
+        const courses = [];
+        let key: string;
+        for(let i = 0; i < englCourseList.length; i++){
+            key = (i+1).toString();
+            courses.push(<Dropdown.Item onClick={() => onClick(englCourseList[i])} eventKey={key}>{englCourseList[i].prefix}</Dropdown.Item>);
+        }
+        return courses;
+    }
+
     function exportedList() {
         const list = [];
         for(let i = 0; i < allSchedules.length; i++){
@@ -133,6 +145,17 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
 
                     <Dropdown.Menu as={CustomMenu}>
                         {mathCoursePrinter()}
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown>
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components3">
+                        <div className="selection-title">
+                            ENGL
+                        </div>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu as={CustomMenu}>
+                        {englCoursePrinter()}
                     </Dropdown.Menu>
                 </Dropdown>
             </ul>
@@ -227,8 +250,12 @@ export function ControlPanel({ ciscCourseList, mathCourseList, allSchedules, set
                         <Button className="btn btn-dark"><CSVLink data={exportedList()}>Download Full List</CSVLink></Button>
                         { visible ? modalHandler() : null}
                     </div>
-                        
                 </Row>
+                <div className="Reqcheck">
+                    <Row>
+                        <Reqcheck>{Reqcheck}</Reqcheck>    
+                    </Row>
+                </div>
             </div>
         </Row>
     );
