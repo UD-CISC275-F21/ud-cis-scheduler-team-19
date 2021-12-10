@@ -42,7 +42,7 @@ const Reqcheck: React.FunctionComponent = () => {
 // Styling
 const styles: { [key: string]: React.CSSProperties } = {
     container: {
-        width: 650,
+        width: 900,
         margin: "10px auto",
         columns: 3,
     },
@@ -50,7 +50,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         width: "50%",
         display: "flex",
         justifyContent: "space-between",
-        margin: "6px 0",
+        margin: "3px 0",
         padding: "8px 15px",
         backgroundColor: "#35a1e0",
     },
