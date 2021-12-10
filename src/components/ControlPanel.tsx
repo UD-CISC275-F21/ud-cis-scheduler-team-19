@@ -235,6 +235,7 @@ export function ControlPanel({ ciscCourseList, mathCourseList, englCourseList, a
                                     <p>-Keep clicking add semester to add more semester tables.</p>
                                     <p>-Click remove semester to remove a table</p>
                                     <p>-Click remove on a course to remove it from the semester</p>
+                                    <p>-Degree requirements can be seen and checked off on the right</p>
                                     <p>-Course information is viewable when you click on one; Full course names and descriptions are editable</p>
                                     <p>-Click on Download Full List to export a .csv file of the schedule</p>
                                 </Accordion.Body>
